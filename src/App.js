@@ -2,6 +2,17 @@ import React, { Component } from 'react';
 import './App.css';
 
 class App extends Component {
+  componentDidMount() {
+    window.addEventListener('message', ({origin, data}) => {
+      if (origin !== process.env.REACT_APP_TOOLKIT_ORIGIN) {
+        return;
+      }
+
+      let { query } = this.parse(data);
+      this.setState(query);
+    })
+  }
+  
   render() {
     return (
       <div className="App">
@@ -17,6 +28,16 @@ class App extends Component {
       
       </div>
     );
+  }
+  
+  parse(data) {
+    let message = {};
+    if (typeof data === 'string') {
+      try {
+        message = JSON.parse(data);
+      } catch(e) {/* Ignored */}
+    }
+    return message;
   }
 }
 
