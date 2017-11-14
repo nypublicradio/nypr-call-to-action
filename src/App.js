@@ -8,14 +8,13 @@ class App extends Component {
   }
   
   componentDidMount() {
-    window.addEventListener('message', ({origin, data}) => {
+    window.addEventListener('message', ({data, currentTarget: {location: { origin }}}) => {
       if (origin !== process.env.REACT_APP_TOOLKIT_ORIGIN) {
         return;
+      } else {
+        this.listener(data);
       }
-
-      let { query } = this.parse(data);
-      this.setState(query);
-    })
+    });
   }
   
   render() {
@@ -43,6 +42,11 @@ class App extends Component {
       } catch(e) {/* Ignored */}
     }
     return message;
+  }
+  
+  listener(data) {
+    let { query } = this.parse(data);
+    this.setState(query);
   }
 }
 
