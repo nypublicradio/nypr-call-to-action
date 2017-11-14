@@ -39,7 +39,7 @@ jobs:
           key: node-deps-{{ checksum "yarn.lock" }}
       - run:
           name: Install aws cli
-          command: pip install awscli
+          command: sudo apt-get -y -qq install awscli
       - run:
           name: Deploy to S3
           command: |
