@@ -4,5 +4,9 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import queryString from 'query-string';
+
+const params = queryString.parse(window.location.search);
+
+ReactDOM.render(<App {...params} />, document.getElementById('root'));
 registerServiceWorker();
