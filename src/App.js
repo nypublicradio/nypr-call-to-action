@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
+import pym from 'pym.js';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+    new pym.Child({polling: 200});
   }
   
   componentDidMount() {
