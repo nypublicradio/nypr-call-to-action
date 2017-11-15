@@ -24,7 +24,6 @@ it('renders query params', () => {
 });
 
 it('responds to postMessage', done => {
-  process.env.REACT_APP_TOOLKIT_ORIGIN = window.location.origin;
   const props = {
     headline: 'foo',
     summary: 'bar',

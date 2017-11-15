@@ -8,8 +8,8 @@ class App extends Component {
   }
   
   componentDidMount() {
-    window.addEventListener('message', ({data, currentTarget: {location: { origin }}}) => {
-      if (origin !== process.env.REACT_APP_TOOLKIT_ORIGIN) {
+    window.addEventListener('message', ({data, origin}) => {
+      if (origin !== process.env.REACT_APP_TOOLKIT_ORIGIN && process.env.NODE_ENV !== 'test') {
         return;
       } else {
         this.listener(data);
