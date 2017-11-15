@@ -52,6 +52,7 @@ jobs:
             fi
             yarn build
             aws s3 sync ./build/ s3://"$AWS_BUCKET"/call-to-action
+            aws s3 cp ./build/index.html s3://"$AWS_BUCKET"/call-to-action/ --cache-control "max-age=0, no-cache"
 
 workflows:
   version: 2
