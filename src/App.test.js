@@ -38,3 +38,8 @@ it('responds to postMessage', done => {
   
   window.postMessage(JSON.stringify(props), '*');
 });
+
+it('shows a preview message', () => {
+  const app = shallow(<App />);
+  expect(app.find('.App__placeholder').text()).toEqual('Fill out the fields and your preview will appear here');
+})
