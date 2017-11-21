@@ -42,7 +42,7 @@ class App extends Component {
 
           {callToAction &&
             <div className="App__footer">
-              <a href={url} target="_blank" rel="nofollow noopener" className="App__call-out">{callToAction}</a>
+              <a href={url} target="_blank" rel="nofollow noopener" className="App__call-out gtm__click-tracking">{callToAction}</a>
             </div>
           }
         </div>
