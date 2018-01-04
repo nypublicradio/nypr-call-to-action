@@ -21,6 +21,11 @@
   font-size: 14px;
   line-height: 1.5;
   margin-top: 0;
+  margin-bottom: 18px;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
   
 .App__call-out {
