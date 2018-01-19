@@ -13,7 +13,7 @@ class App extends Component {
     };
     new pym.Child({polling: 200});
   }
-  
+
   componentDidMount() {
     window.addEventListener('message', ({data, origin}) => {
       if (origin !== process.env.REACT_APP_TOOLKIT_ORIGIN && process.env.NODE_ENV !== 'test') {
@@ -23,7 +23,7 @@ class App extends Component {
       }
     });
   }
-  
+
   render() {
     let { headline, summary, callToAction, url } = this.state;
     let previewMode = [headline, summary, callToAction, url].every(x => !x);
@@ -49,7 +49,7 @@ class App extends Component {
       );
     }
   }
-  
+
   parse(data) {
     let message = {};
     if (typeof data === 'string') {
@@ -59,7 +59,7 @@ class App extends Component {
     }
     return message;
   }
-  
+
   listener(data) {
     let { query } = this.parse(data);
     this.setState(query);
