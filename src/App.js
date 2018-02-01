@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import pym from 'pym.js';
 
 const TOOLKIT_ORIGIN = [process.env.REACT_APP_TOOLKIT_ORIGIN];
 // open up postmessage on demo to ease development
@@ -17,7 +16,7 @@ class App extends Component {
       url: this.props.url,
       callToAction: this.props.callToAction
     };
-    new pym.Child({polling: 200});
+    props.embed.onMessage('incoming', this.listener);
   }
 
   componentDidMount() {
@@ -28,6 +27,10 @@ class App extends Component {
         this.listener(data);
       }
     });
+  componentWillUnmount() {
+    this.props.embed.remove();
+  }
+
   }
 
   render() {
