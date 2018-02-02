@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './CallToAction.css';
 import WidgetBase from 'nypr-widget-base';
 
 export default class CallToAction extends WidgetBase {
@@ -8,29 +8,29 @@ export default class CallToAction extends WidgetBase {
     let previewMode = [headline, summary, callToAction, url].every(x => !x);
     if (previewMode) {
       return (
-        <div className="App">
-          <p className="App__placeholder">Fill out the fields and your preview will appear here</p>
+        <div className="CallToAction">
+          <p className="CallToAction__placeholder">Fill out the fields and your preview will appear here</p>
         </div>
       );
     } else {
       return (
-        <div className="App" style={this.style('body')}>
+        <div className="CallToAction" style={this.style('body')}>
           <h1
-            className="App__headline"
+            className="CallToAction__headline"
             style={this.style('h1')}>
             {headline}
           </h1>
 
-          <p className="App__summary">{summary}</p>
+          <p className="CallToAction__summary">{summary}</p>
 
           {callToAction &&
-            <div className="App__footer">
+            <div className="CallToAction__footer">
               <a
                 style={this.style('button')}
                 href={url}
                 target="_blank"
                 rel="nofollow noopener"
-                className="App__call-out gtm__call-to-action">{callToAction}</a>
+                className="CallToAction__call-out gtm__call-to-action">{callToAction}</a>
             </div>
           }
         </div>

@@ -1,47 +1,47 @@
-.App {
+.CallToAction {
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
   padding: 30px 25px;
 }
-  
-.not-embedded .App {
+
+.not-embedded .CallToAction {
   height: 100vh;
 }
 
-.App__headline {
+.CallToAction__headline {
   font-family: "Oswald", sans-serif;
   font-weight: 600;
   font-size: 22px;
   margin-top: 0;
 }
 
-.App__summary {
+.CallToAction__summary {
   font-size: 14px;
   line-height: 1.5;
   margin-top: 0;
   margin-bottom: 18px;
-  
+
   &:last-child {
     margin-bottom: 0;
   }
 }
-  
-.App__call-out {
+
+.CallToAction__call-out {
   color: black;
   font-family: "Oswald", sans-serif;
   font-weight: 600;
   font-size: 18px;
   text-transform: uppercase;
   text-decoration: none;
-  
+
   display: block;
   background-color: #dcf42c;
   padding: 3px 0;
 }
 
-.App__placeholder {
+.CallToAction__placeholder {
   font-size: 18px;
   color: #999;
   font-style: italic;
@@ -51,21 +51,21 @@
 }
 
 @media only screen and (min-width: 481px) {
-  .App__headline {
+  .CallToAction__headline {
     font-size: 28px;
   }
-  
-  .App__summary {
+
+  .CallToAction__summary {
     font-size: 18px;
   }
-  
-  .App__call-out {
+
+  .CallToAction__call-out {
     font-size: 22px;
     padding: 10px 20px;
     display: inline-block;
   }
 
-  .App__footer {
+  .CallToAction__footer {
     margin: 0 auto;
     max-width: 400px;
     width: 100%;

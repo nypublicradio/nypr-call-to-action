@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import CallToAction from './CallToAction';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<CallToAction />, document.getElementById('root'));
