@@ -4,7 +4,7 @@ import './App.css';
 
 const THEMES = process.env.REACT_APP_THEMES;
 
-class App extends Component {
+export default class CallToAction extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -99,5 +99,3 @@ class App extends Component {
     this.setState(query);
   }
 }
-
-export default App;
