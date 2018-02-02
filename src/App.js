@@ -7,7 +7,6 @@ const THEMES = process.env.REACT_APP_THEMES;
 export default class CallToAction extends Component {
   constructor(props) {
     super(props);
-    let { embed } = props;
     this.state = {
       headline: this.props.headline,
       summary: this.props.summary,
@@ -15,6 +14,8 @@ export default class CallToAction extends Component {
       callToAction: this.props.callToAction,
       styles: {}
     };
+
+    let { embed } = props;
     if (embed) {
       embed.onMessage('incoming', this.listener);
     }
