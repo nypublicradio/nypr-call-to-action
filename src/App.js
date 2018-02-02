@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
+const THEMES = process.env.REACT_APP_THEMES;
 
 class App extends Component {
   constructor(props) {
@@ -9,7 +10,8 @@ class App extends Component {
       headline: this.props.headline,
       summary: this.props.summary,
       url: this.props.url,
-      callToAction: this.props.callToAction
+      callToAction: this.props.callToAction,
+      styles: {}
     };
     props.embed.onMessage('incoming', this.listener);
   }
@@ -19,6 +21,18 @@ class App extends Component {
 
   componentWillUnmount() {
     this.props.embed.remove();
+  }
+
+  componentDidUpdate(props, { brand }) {
+    if (this.state.brand !== brand) {
+      this.updateBrand();
+    }
+  }
+
+  updateBrand() {
+    fetch(`${THEMES}/${this.state.brand}.json`)
+      .then(r => r.json())
+      .then(styles => this.setState({styles}));
   }
 
   }
