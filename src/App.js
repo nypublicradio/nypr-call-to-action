@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 
-const TOOLKIT_ORIGIN = [process.env.REACT_APP_TOOLKIT_ORIGIN];
-// open up postmessage on demo to ease development
-if (process.env.REACT_APP_BUILD === 'demo') {
-  TOOLKIT_ORIGIN.push('http://localhost:4200');
-}
 
 class App extends Component {
   constructor(props) {
@@ -20,13 +15,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    window.addEventListener('message', ({data, origin}) => {
-      if (!TOOLKIT_ORIGIN.includes(origin) && process.env.NODE_ENV !==  'test') {
-        return;
-      } else {
-        this.listener(data);
-      }
-    });
+  }
+
   componentWillUnmount() {
     this.props.embed.remove();
   }
