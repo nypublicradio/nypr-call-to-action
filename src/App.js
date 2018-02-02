@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import getattr from 'safe-object';
 import './App.css';
 
 const THEMES = process.env.REACT_APP_THEMES;
@@ -35,6 +36,16 @@ class App extends Component {
       .then(styles => this.setState({styles}));
   }
 
+  style(path) {
+    let parts = path.split('.');
+    if (parts.length === 1) {
+      // get everything nested under this path
+      return this.state.styles[path];
+    } else {
+      // look for a specific path
+      let key = parts.slice(-1);
+      return { [key]: getattr(this.state, `styles.${path}`) };
+    }
   }
 
   render() {
