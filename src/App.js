@@ -60,14 +60,23 @@ class App extends Component {
       );
     } else {
       return (
-        <div className="App">
-          <h1 className="App__headline">{headline}</h1>
+        <div className="App" style={this.style('body')}>
+          <h1
+            className="App__headline"
+            style={this.style('h1')}>
+            {headline}
+          </h1>
 
           <p className="App__summary">{summary}</p>
 
           {callToAction &&
             <div className="App__footer">
-              <a href={url} target="_blank" rel="nofollow noopener" className="App__call-out gtm__call-to-action">{callToAction}</a>
+              <a
+                style={this.style('button')}
+                href={url}
+                target="_blank"
+                rel="nofollow noopener"
+                className="App__call-out gtm__call-to-action">{callToAction}</a>
             </div>
           }
         </div>
