@@ -16,28 +16,28 @@ it('renders query params', () => {
     url: 'http://buz.com'
   };
   const app = shallow(<App {...props} />);
-  
+
   expect(app.find('.App__headline').text()).toEqual(props.headline);
   expect(app.find('.App__summary').text()).toEqual(props.summary);
   expect(app.find('.App__call-out').text()).toEqual(props.callToAction);
   expect(app.find('.App__call-out').prop('href')).toEqual(props.url);
 });
 
-it('responds to postMessage', done => {
-  const props = {
-    headline: 'foo',
-    summary: 'bar',
-    callToAction: 'baz',
-    url: 'http://buz.com'
-  };
-  const app = shallow(<App />);
-  jest.spyOn(app.instance(), 'listener').mockImplementation(data => {
-    expect(data).toEqual(JSON.stringify(props));
-    done();
-  });
-  
-  window.postMessage(JSON.stringify(props), '*');
-});
+// it('responds to postMessage', done => {
+//   const props = {
+//     headline: 'foo',
+//     summary: 'bar',
+//     callToAction: 'baz',
+//     url: 'http://buz.com'
+//   };
+//   const app = shallow(<App />);
+//   jest.spyOn(app.instance(), 'listener').mockImplementation(data => {
+//     expect(data).toEqual(JSON.stringify(props));
+//     done();
+//   });
+//
+//   window.postMessage(JSON.stringify(props), '*');
+// });
 
 it('shows a preview message', () => {
   const app = shallow(<App />);

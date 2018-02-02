@@ -7,6 +7,7 @@ const THEMES = process.env.REACT_APP_THEMES;
 export default class CallToAction extends Component {
   constructor(props) {
     super(props);
+    let { embed } = props;
     this.state = {
       headline: this.props.headline,
       summary: this.props.summary,
@@ -14,15 +15,23 @@ export default class CallToAction extends Component {
       callToAction: this.props.callToAction,
       styles: {}
     };
-    props.embed.onMessage('incoming', this.listener);
+    if (embed) {
+      embed.onMessage('incoming', this.listener);
+    }
   }
 
   componentDidMount() {
-    this.props.embed.sendMessage('mounted');
+    let { embed } = this.props;
+    if (embed) {
+      embed.sendMessage('mounted');
+    }
   }
 
   componentWillUnmount() {
-    this.props.embed.remove();
+    let { embed } = this.props;
+    if (embed) {
+      embed.remove();
+    }
   }
 
   componentDidUpdate(props, { brand }) {
