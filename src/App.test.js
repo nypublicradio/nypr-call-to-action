@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import { shallow } from 'enzyme';
+import pym from 'pym.js';
+
+jest.mock('pym.js');
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
@@ -23,23 +26,29 @@ it('renders query params', () => {
   expect(app.find('.App__call-out').prop('href')).toEqual(props.url);
 });
 
-// it('responds to postMessage', done => {
-//   const props = {
-//     headline: 'foo',
-//     summary: 'bar',
-//     callToAction: 'baz',
-//     url: 'http://buz.com'
-//   };
-//   const app = shallow(<App />);
-//   jest.spyOn(app.instance(), 'listener').mockImplementation(data => {
-//     expect(data).toEqual(JSON.stringify(props));
-//     done();
-//   });
-//
-//   window.postMessage(JSON.stringify(props), '*');
-// });
-
 it('shows a preview message', () => {
   const app = shallow(<App />);
   expect(app.find('.App__placeholder').text()).toEqual('Fill out the fields and your preview will appear here');
-})
+});
+
+describe('pym init', () => {
+  pym.Parent.mockImplementation(() => {
+    return {
+      onMessage: jest.fn(),
+      sendMessage: jest.fn(),
+      remove: jest.fn()
+    }
+  });
+
+  it('sets up a listener for the `incoming` message', () => {
+    let embed = new pym.Parent();
+    mount(<App embed={embed} />);
+    expect(embed.onMessage).toHaveBeenCalled();
+  });
+
+  it('it sends the `mounted` message when the component mounts', () => {
+    let embed = new pym.Parent();
+    mount(<App embed={embed} />);
+    expect(embed.sendMessage).toHaveBeenCalled();
+  });
+});
