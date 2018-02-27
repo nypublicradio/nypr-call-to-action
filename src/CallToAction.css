@@ -6,6 +6,35 @@
   padding: 30px 25px;
 }
 
+.CallToAction__wrapper {
+  position: relative;
+}
+
+.CallToAction__accent:before {
+  content: '';
+  display: block;
+  max-width: 187px;
+
+  border-top: 5px solid currentColor;
+  border-right: 5px solid transparent;
+  margin-bottom: 30px;
+  margin-left: 5px;
+}
+
+.CallToAction__accent:after {
+  content: '';
+  display: block;
+  height: 0;
+  width: 0;
+  border-left: 5px solid transparent;
+  border-top: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid currentColor;
+
+  position: absolute;
+  top: -5px;
+}
+
 .not-embedded .CallToAction {
   height: 100vh;
 }

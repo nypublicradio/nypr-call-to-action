@@ -15,24 +15,29 @@ export default class CallToAction extends WidgetBase {
     } else {
       return (
         <div className="CallToAction" style={this.style('body')}>
-          <h1
-            className="CallToAction__headline"
-            style={this.style('h1')}>
-            {headline}
-          </h1>
+          <div className="CallToAction__wrapper">
 
-          <p className="CallToAction__summary">{summary}</p>
+            <span className="CallToAction__accent" style={this.style('accent')}></span>
+            <h1
+              className="CallToAction__headline"
+              style={this.style('h1')}>
+              {headline}
+            </h1>
 
-          {callToAction &&
-            <div className="CallToAction__footer">
-              <a
-                style={this.style('button')}
-                href={url}
-                target="_blank"
-                rel="nofollow noopener"
-                className="CallToAction__call-out gtm__call-to-action">{callToAction}</a>
-            </div>
-          }
+            <p className="CallToAction__summary">{summary}</p>
+
+            {callToAction &&
+              <div className="CallToAction__footer">
+                <a
+                  style={this.style('button')}
+                  href={url}
+                  target="_blank"
+                  rel="nofollow noopener"
+                  className="CallToAction__call-out gtm__call-to-action">{callToAction}</a>
+              </div>
+            }
+
+          </div>
         </div>
       );
     }
