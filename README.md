@@ -2,6 +2,9 @@
 
 This is a simple text widget with a button linking out to an external URL.
 
+## This is a toolkit module
+This is a module designed to be used with [nypr-toolkit](https://github.com/nypublicradio/nypr-toolkit). See [that readme](https://github.com/nypublicradio/nypr-toolkit#development) for details on setting up a toolkit instance to work with modules.
+
 ## Development
 
 This is a React app, bootstrapped with [`create-react-app`](https://github.com/facebookincubator/create-react-app), which includes a testing framework and build tools.
